@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align="center">
+      <strong>
+        Questões
+      </strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngIf="this.items == null">
+      <ion-label>Disciplina</ion-label>
+      <ion-select [(ngModel)]="newItem.disciplina" (ionChange)="onChange($event)">
+        <ion-select-option *ngFor="let disciplina of disciplinas">{{disciplina.Nome}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="this.items != null">
+      <ion-label *ngFor="let item of items">{{item.disciplina}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid fixed>
+    <ion-item *ngIf="this.items == null">
+      <ion-input placeholder="Seu Nome" [(ngModel)]="newItem.nome" [(ngModel)]="studentName"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="this.items != null">
+      <ion-input *ngFor="let item of items" [disabled]="item.nome">{{item.nome}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea placeholder="Escrever Resposta" rows="5" [(ngModel)]="resposta"></ion-textarea>
+    </ion-item>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="CreateRecord()" [disabled]="!questaoHabilitada">
+          <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+          &nbsp;Enviar Resposta
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
