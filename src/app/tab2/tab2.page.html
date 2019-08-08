@@ -27,7 +27,7 @@
     </ion-item>
 
     <ion-item *ngIf="this.items != null">
-      <ion-input *ngFor="let item of items" [disabled]="item.nome">{{item.nome}}</ion-input>
+      <ion-input *ngFor="let item of items" [disabled]="true">{{item.nome}}</ion-input>
     </ion-item>
 
     <ion-item>

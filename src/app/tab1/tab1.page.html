@@ -12,7 +12,7 @@
   <ion-grid fixed>
     <ion-label>Para continuar valide a hash:</ion-label>
     <ion-item>
-      <ion-input placeholder="Hash" [(ngModel)]="hash"></ion-input>
+      <ion-input type="password" placeholder="Hash" [(ngModel)]="hash"></ion-input>
     </ion-item>
 
     <ion-row>
@@ -52,7 +52,7 @@
   </ion-grid>
   <br>
   <ion-item>
-    <ion-textarea [disabled]="true" rows="5">Resposta</ion-textarea>
+    <ion-textarea [disabled]="true" rows="5">{{questaoFinal}}</ion-textarea>
   </ion-item>
 
   <ion-grid fixed>

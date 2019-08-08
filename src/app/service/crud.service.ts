@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { whenRendered } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,11 @@ export class CrudService {
   }
 
   auterarQuestao(record) {
-    console.log(record)
     return this.firestore.collection('Questoes/').doc('RzKlt6YQjLZzuqKhUP3J').set(record);
   }
 
   create_NewStudent(disciplinaNome, studentName, recordID, record) {
-    console.log(recordID)
-    return this.firestore.collection(disciplinaNome + '_' + studentName + '/').doc(recordID).set(record);
+    return this.firestore.collection(disciplinaNome + '/').doc(studentName + '_' + recordID).set(record);
   }
 
   read_Students() {
@@ -24,7 +23,6 @@ export class CrudService {
   }
 
   update_Student(disciplinaNome, studentName, recordID, record) {
-    console.log(disciplinaNome + '_' + studentName + '/' + recordID);
     return this.firestore.doc(disciplinaNome + '_' + studentName + '/' + recordID).update(record);
   }
 
@@ -36,9 +34,8 @@ export class CrudService {
     return this.firestore.collection(val).snapshotChanges();
   }
 
-  redeAll() {
-    console.log(this.firestore);
-    //return this.firestore.collection.arguments;
+  redeAll(val) {
+    return this.firestore.collection(val).snapshotChanges();
   }
 
 }
